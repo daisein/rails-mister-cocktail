@@ -1,0 +1,11 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path cocktail.url %>);">
+  <div class="card-category"></div>
+  <div class="card-description">
+    <h2><%= cocktail.name  %></h2>
+    <p><%= cocktail.Intro %></p>
+  </div>
+  <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+</div>
+<br>
+
+
