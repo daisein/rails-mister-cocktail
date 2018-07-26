@@ -1,1 +1,16 @@
-new.html.erb
+<h1 class="text-center">Review for <%= @dose.description %></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.input :description, placeholder:"Cool" %>
+      <%= f.association :ingredient, :include_blank => false %>
+      <%= f.submit "Post dose", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

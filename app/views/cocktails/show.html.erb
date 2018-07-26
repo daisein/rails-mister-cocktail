@@ -1,1 +1,30 @@
-new.html.erb
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cocktail.name %>
+</p>
+
+
+<p>
+  <strong>Dose:</strong>
+  <% @cocktail.doses.each do |dose| %>
+  <% d = dose.description %>
+  <% ingredients = Ingredient.all %>
+  <% ingredients.each do |i|  %>
+  <% if i.id == dose.ingredient_id  %>
+  <% c = i.name %>
+  <li><%= d +" " + c %></li>
+  <%= link_to 'Destroy', dose, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <% end %>
+
+
+  <% end %>
+</p>
+
+
+
+
+<%= link_to 'Back', cocktails_path %>
+<%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>

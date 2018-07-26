@@ -10,6 +10,7 @@ class DosesController < ApplicationController
     def create
     set_cock
     @dose =Dose.new(dose_params)
+    @dose.cocktail_id = params[:cocktail_id]
 
       if @dose.save
         redirect_to cocktail_path(@cocktail)
@@ -30,7 +31,7 @@ class DosesController < ApplicationController
   def dose_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:dose).permit(:description, :cocktail_id, :ingredient_id)
+    params.require(:dose).permit(:description, :ingredient_id)
    end
 
     def set_cock
