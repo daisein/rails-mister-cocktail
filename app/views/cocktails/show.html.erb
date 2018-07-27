@@ -26,8 +26,20 @@
             <p>Ravenously while stridently coughed far promiscuously below jeez much yikes bland that salamander cunningly some over abhorrent as house with between ouch that well scurrilously alas capybara massive outdid oh said hello majestically roadrunner lobster much bled alas lighted together waved upheld.</p>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <blockquote class="text-left-align">
-                    <span> Ravenously while stridently coughed far promiscuously below jeez much yikes bland that salamander cunningly some over abhorrent as house with between ouch that well scurrilously alas capybara massive outdid oh said hello majestically roadrunner lobster much bled alas lighted together waved upheld.</span>
-                    <span class="author-name"> <a href="#">-- Robert Deneairo</a></span>
+                    <span>
+                        <strong>Dose:</strong>
+                          <% @cocktail.doses.each do |dose| %>
+                          <% d = dose.description %>
+                          <% ingredients = Ingredient.all %>
+                          <% ingredients.each do |i|  %>
+                          <% if i.id == dose.ingredient_id  %>
+                          <% c = i.name %>
+                          <li><%= d +" " + c %> <%= link_to 'Destroy', dose, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+                          <% end %>
+                          <% end %>
+                          <% end %>
+                    </span>
                 </blockquote>
             </div>
             <p>Ravenously while stridently coughed far promiscuously below jeez much yikes bland that salamander cunningly some over abhorrent as house with between ouch that well scurrilously alas capybara massive outdid oh said hello majestically roadrunner lobster much bled alas lighted together waved upheld.</p>
@@ -37,10 +49,9 @@
         <div class="tags">
             <span>Tags</span>
             <ul>
-                <li><a rel="tag" <%= link_to 'Back', cocktails_path %>>College</a></li>
-                <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/job/">Job</a></li>
-                <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/search/">Search</a></li>
-                <li><a rel="tag" href="http://jobcareer.chimpgroup.com/jobdoor/tag/teacher/">Teacher</a></li>
+                <li><a rel="tag" <%= link_to 'Back', cocktails_path %></a></li>
+                <li><a rel="tag" <%= link_to 'Add Dose', new_cocktail_dose_path(@cocktail) %></a></li>
+                <li><a rel="tag" <%= link_to 'delete', cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' } %></a></li>
             </ul>
         </div>
 
@@ -48,46 +59,3 @@
 
 </div>
 </div>
-
-<p id="notice"><%= notice %></p>
-
-
-
-<% content_for(:title) do  %>
-<%= @cocktail.name + " is on rails"%>
-<% end %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @cocktail.name %>
-</p>
-
-
-
-
-
-
-<p>
-  <strong>Dose:</strong>
-  <% @cocktail.doses.each do |dose| %>
-  <% d = dose.description %>
-  <% ingredients = Ingredient.all %>
-  <% ingredients.each do |i|  %>
-  <% if i.id == dose.ingredient_id  %>
-  <% c = i.name %>
-  <li><%= d +" " + c %></li>
-  <%= link_to 'Destroy', dose, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  <% end %>
-
-
-  <% end %>
-</p>
-
-
-
-
-
-<%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
-<td><%= link_to 'Destroy', cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
