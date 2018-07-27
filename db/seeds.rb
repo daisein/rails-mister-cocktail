@@ -57,7 +57,7 @@ cocktails_attributes = [
 
     {
     name:         'Gimlet',
-    url:          'http://cdn.liquor.com/wp-content/uploads/2017/04/18130027/gimlet-1200x628-social.jpg',
+    url:          'https://foodchannelcom.files.wordpress.com/2018/02/cucumbergimlet_small1.jpg',
     Intro:        'Sweet, tart, and refreshing.'
   }
 ]
